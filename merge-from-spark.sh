@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 pushd . > /dev/null
 tools_path="`pwd`/$0"
 cd `dirname $tools_path`
@@ -17,22 +19,19 @@ merge_project() {
     git pull
     git checkout master
     git merge spark-core-master
+    git push
     cd ..
 }
 
 cd core-firmware
 rm -fr inc src
-git checkout .
-git checkout spark-master
-git fetch
-git pull
-git checkout master
-git merge spark-master
-git rm build/core-firmware.bin
-git rm build/core-firmware.elf
-git rm build/core-firmware.hex
 cd ..
 
 merge_project core-common-lib
 merge_project core-communication-lib
 merge_project core-firmware
+
+cd core-firmware
+git rm build/core-firmware.bin
+git rm build/core-firmware.elf
+git rm build/core-firmware.hex
