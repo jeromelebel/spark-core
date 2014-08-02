@@ -4,9 +4,10 @@ import os
 import shutil
 import sys
 
+SPARK_CORE_PROJECT = "spark-core"
 MY_SOURCE = "src"
-SPARK_FIRMWARE = "core-firmware"
-SUBMODULES = [ SPARK_FIRMWARE, "core-common-lib", "core-communication-lib" ]
+SPARK_FIRMWARE = SPARK_CORE_PROJECT + "/" + "core-firmware"
+SUBMODULES = [ SPARK_FIRMWARE, SPARK_CORE_PROJECT + "/core-common-lib", SPARK_CORE_PROJECT + "/core-communication-lib" ]
 SPARK_SOURCES = SPARK_FIRMWARE + "/src"
 SPARK_HEADERS = SPARK_FIRMWARE + "/inc"
 EXTRA_SOURCES = SPARK_FIRMWARE + "/extra"
