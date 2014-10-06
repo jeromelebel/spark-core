@@ -20,7 +20,7 @@ while True:
     print "connected to " + port
     while True:
       line = s.readline()
-      print line
+      print line.strip()
   except Exception, e:
     pprint.pprint(e)
     pass
